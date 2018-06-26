@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>CRUD</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Libros</h2>
+			<a href="/nuevo" class="btn btn-success">Nuevo</a>
+			<br><br>
+			<% if(lista.length>0){%>
+			<table class="table table-hover">
+			<thead class="thead-dark">
+				<th>Titulo</th>
+				<th>Resumen</th>
+				<th>Imagen</th>
+				<th>Fecha</th>
+				<th></th>
+			</thead>
+			  <% for(var i=0; i<lista.length; i++) {%>
+				<tr class="quote">
+				  <td><%= lista[i].titulo %></td>
+				  <td><%= lista[i].resumen %></td>
+				  <td><img src="<%= lista[i].imagen %>" class="img-responsive" style="width:50%" style="height:50%"></td>
+				  <td><%= lista[i].fecha %></td>
+				  <td>
+					<a href="/editar/<%= lista[i].libros_id %>" class="btn btn-warning">Editar</a>
+					<p onclick="changeColor(<%= lista[i].libros_id %>);" class="btn btn-danger">Eliminar</p>
+				  </td>
+				</tr>
+			  <% } %>
+			</table>
+			<%} else {%>
+			<p class="alert alert-warning">No hay contactos</p>
+			<% } %>
+		</div>
+	</div>
+</div>
+<script>
+function changeColor(idlibro) {
+
+    if (confirm("Esta seguro que desea eliminar el libro con id : "+idlibro+"?")) {
+    	 window.location.href = "http://localhost:3000/eliminar/"+idlibro;
+		   /*document.getElementById("btnForm").click();
+		    setTimeout(function(){
+		   window.location.href = "http://localhost:3000/";
+		   }, 3000);*/
+		   setTimeout(function(){ 
+		   	alert("El libro fue eliminado satisfactoriamente");
+		   	   }, 2000);
+    } else {
+    	 setTimeout(function(){ 
+    	  alert("Eliminacion cancelada");
+    	  }, 100);
+    }
+  }
+</script>
+</body>
+</html>

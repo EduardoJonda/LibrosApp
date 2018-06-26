@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Nuevo Libro</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+
+<div class="container">
+<br>
+<div class="card text-center">
+  <div class="card-header">
+    <h2>Nuevo Libro</h2>
+  </div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<br><br>
+			<form method="post" action="/guardar" enctype="multipart/form-data">
+				<center>
+			  <div class="form-group">
+				<input type="text" name="libro[titulo]" style="width:50%" class="form-control" id="titulo" placeholder="Titulo">
+			  </div>
+
+			  <div class="form-group">
+				<input type="text" name="libro[resumen]" style="width:50%" class="form-control" id="resumen" placeholder="Resumen">
+			  </div>
+
+			  <div class="form-group">
+				<input type="file" name="libro[imagen]" style="width:50%" class="form-control" id="imagen" placeholder="Imagen">
+			  </div>
+
+			  <div class="form-group">
+				<input type="date" name="libro[fecha]" style="width:50%" class="form-control" id="fecha" placeholder="Fecha">
+			  </div>
+			  <button  style="display: none;" id="btnForm" type="submit" class="btn btn-primary">Guardar Verdadero</button>
+			  </center>
+			</form>
+		</div>
+	</div>
+
+	  <div class="card-footer text-muted">
+
+<div class="row">
+  <div class="col"><a href="/" class="btn btn-primary">Inicio</a></div>
+  <div class="col"><p onclick="changeColor();" class="btn btn-success">Guardar</p></div>
+</div>
+
+
+  </div>
+</div>
+
+</div>
+<script>
+function changeColor(newColor) {
+   document.getElementById("btnForm").click();
+    setTimeout(function(){
+   window.location.href = "http://localhost:3000/";
+   }, 3000);
+  }
+</script>
+
+</body>
+</html>
